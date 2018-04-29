@@ -23,8 +23,14 @@ pause;
 
 %% =================== Part 3: Cost and Gradient descent ===================
 
+% Scale features and set them to zero mean
+%fprintf('Normalizing Features ...\n');
+%[x, mu, sigma] = featureNormalize(x);
+
+
 X = [ones(m, 1), x(:,1)]; % Add a column of ones to x
 theta = zeros(2, 1); % initialize fitting parameters
+
 
 
 fprintf('\nTesting the cost function ...\n')
@@ -39,11 +45,13 @@ pause;
 fprintf('\nRunning Gradient Descent ...\n')
 
 % Some gradient descent settings
-iterations = 1500;
+iterations = 1500*2;
 alpha = 0.01;
 
+
+
 % run gradient descent
-theta = gradientDescent(X, y, theta, alpha, iterations);
+[theta, J_history] = gradientDescent(X, y, theta, alpha, iterations);
 
 % print theta to screen
 fprintf('Theta found by gradient descent:\n');
@@ -65,6 +73,11 @@ fprintf('For x = 10, we predict %f\n - it should be 16.70',predict1);
 
 % pause;
 
+% Plot the convergence graph
+figure;
+plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
+xlabel('Number of iterations');
+ylabel('Cost J');
 
 
 
