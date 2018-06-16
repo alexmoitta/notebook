@@ -71,6 +71,8 @@ predict1 = [1, 10] *theta;
 fprintf('For x = 10, we predict %f\n - it should be 16.70',predict1);
 
 
+
+
 % pause;
 
 % Plot the convergence graph
@@ -78,7 +80,6 @@ figure;
 plot(1:numel(J_history), J_history, '-b', 'LineWidth', 2);
 xlabel('Number of iterations');
 ylabel('Cost J');
-
 
 
 %% ============= Part 4: Visualizing J(theta_0, theta_1) =============
@@ -115,3 +116,6 @@ contour(theta0_vals, theta1_vals, J_vals, logspace(-2, 3, 20))
 xlabel('\theta_0'); ylabel('\theta_1');
 hold on;
 plot(theta(1), theta(2), 'rx', 'MarkerSize', 10, 'LineWidth', 2);
+
+
+
